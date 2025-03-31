@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from slack_sdk.web.async_client import AsyncWebClient
 
 
-load_dotenv()
+load_dotenv(override=True)
 
 
 class Environment:
