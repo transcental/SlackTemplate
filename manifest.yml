@@ -1,12 +1,12 @@
 {
     "display_information": {
-        "name": "Monzo for Slack",
-        "description": "Tracking your finances",
+        "name": "My Slack App",
+        "description": "Slack app that does cool things!",
         "background_color": "#d45443"
     },
     "features": {
         "bot_user": {
-            "display_name": "Monzo",
+            "display_name": "Amber's App",
             "always_online": false
         }
     },
@@ -14,7 +14,6 @@
         "scopes": {
             "bot": [
                 "chat:write",
-                "chat:write.customize"
             ]
         }
     },
