@@ -29,6 +29,8 @@ async def main(_app: Starlette):
         env.session = session
         handler = None
         if env.slack_app_token:
+            if env.environment == "production":
+                logging.warning("You are currently running Socket mode in production. This is NOT RECOMMENDED - you should set up a proper HTTP server with a request URL.")
             from slack_bolt.adapter.socket_mode.async_handler import AsyncSocketModeHandler
             from app.utils.slack import app as slack_app
             
