@@ -51,6 +51,7 @@ This is a Slack template for creating a great Slack app using Python and Starlet
    
    SLACK_BOT_TOKEN="bot-token"
    SLACK_SIGNING_SECRET="signing-secret"
+   SLACK_APP_TOKEN="app-token" # This is optional - recommended to use socket mode in dev because it allows you to run the app locally without needing to tunnel. Not recommended for production.
 
    SLACK_HEARTBEAT_CHANNEL="channel-id"
    ```
@@ -60,7 +61,7 @@ This is a Slack template for creating a great Slack app using Python and Starlet
 
 ## Running the Application
 
-1. Start your tunneling tool and expose the local server.
+1. Start your tunneling tool and expose the local server. (Not needed in socket mode with `SLACK_APP_TOKEN` set)
 
    Note the HTTPS URL you get.
 

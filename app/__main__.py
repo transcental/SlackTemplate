@@ -27,7 +27,21 @@ async def main(_app: Starlette):
     await send_heartbeat(":neodog_nom_verified: Bot is online!")
     async with ClientSession() as session:
         env.session = session
+        handler = None
+        if env.slack_app_token:
+            from slack_bolt.adapter.socket_mode.async_handler import AsyncSocketModeHandler
+            from app.utils.slack import app as slack_app
+            
+            handler = AsyncSocketModeHandler(slack_app, env.slack_app_token)
+            logging.info("Starting Socket Mode handler")
+            await handler.connect_async()
+            
+        logging.info(f"Starting Uvicorn on port {env.port}")
         yield
+        
+        if handler:
+            logging.info("Stopping Socket Mode handler")
+            await handler.close_async()
 
 
 def start():
