@@ -1,25 +1,55 @@
 {
     "display_information": {
-        "name": "My Slack App",
-        "description": "Slack app that does cool things!",
-        "background_color": "#d45443"
+        "name": "Template"
     },
     "features": {
         "bot_user": {
-            "display_name": "Amber's App",
+            "display_name": "Template",
             "always_online": false
-        }
+        },
+        "shortcuts": [
+            {
+                "name": "Hello World!",
+                "type": "global",
+                "callback_id": "hello_world",
+                "description": "Hi there"
+            }
+        ],
+        "slash_commands": [
+            {
+                "command": "/hello",
+                "description": "world!",
+                "should_escape": true
+            },
+            {
+                "command": "/dev-hello",
+                "description": "dev world",
+                "should_escape": true
+            }
+        ]
     },
     "oauth_config": {
         "scopes": {
             "bot": [
+                "commands",
                 "chat:write",
+                "channels:history",
+                "groups:history"
             ]
         }
     },
     "settings": {
+        "event_subscriptions": {
+            "bot_events": [
+                "message.channels",
+                "message.groups"
+            ]
+        },
+        "interactivity": {
+            "is_enabled": true
+        },
         "org_deploy_enabled": false,
-        "socket_mode_enabled": false,
+        "socket_mode_enabled": true,
         "token_rotation_enabled": false
     }
 }
