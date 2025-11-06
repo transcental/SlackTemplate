@@ -14,5 +14,6 @@ RUN uv sync --frozen
 EXPOSE 3000
 
 ENV PATH="/app/.venv/bin:$PATH"
+RUN uv run piccolo migrations forwards all
 
 CMD ["app"]

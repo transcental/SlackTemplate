@@ -1,14 +1,17 @@
+import logging
+
 from slack_bolt.adapter.starlette.async_handler import AsyncSlackRequestHandler
 from starlette.applications import Starlette
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 from starlette.routing import Route
 
-from app.__main__ import main
-from app.utils.env import env
-from app.utils.slack import app as slack_app
+from app.config import config
+from app.env import env
 
-req_handler = AsyncSlackRequestHandler(slack_app)
+logger = logging.getLogger(__name__)
+
+req_handler = AsyncSlackRequestHandler(env.app)
 
 
 async def endpoint(req: Request):
@@ -31,10 +34,10 @@ async def health(req: Request):
 
 
 app = Starlette(
-    debug=True if env.environment != "production" else False,
+    debug=True if config.environment != "production" else False,
     routes=[
         Route(path="/slack/events", endpoint=endpoint, methods=["POST"]),
         Route(path="/health", endpoint=health, methods=["GET"]),
     ],
-    lifespan=main,
+    lifespan=env.enter,
 )

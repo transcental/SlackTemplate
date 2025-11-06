@@ -1,0 +1,25 @@
+from pydantic import PostgresDsn
+from pydantic_settings import BaseSettings
+from pydantic_settings import SettingsConfigDict
+
+
+class SlackConfig(BaseSettings):
+    bot_token: str
+    signing_secret: str
+    maintainer_id: str
+    app_token: str | None = None
+    heartbeat_channel: str | None = None
+
+
+class Config(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=".env", env_nested_delimiter="__", extra="ignore"
+    )
+    slack: SlackConfig
+    database_url: PostgresDsn
+    environment: str = "development"
+    timezone: str = "Europe/London"
+    port: int = 3000
+
+
+config = Config()  # type: ignore

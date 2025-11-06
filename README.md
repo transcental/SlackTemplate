@@ -24,10 +24,12 @@ This is a Slack template for creating a great Slack app using Python and Starlet
 
    ```
    git clone https://github.com/your-repo/slack-template.git
-   cd professor-bloom
+   cd slack-template
    ```
+   
+2. Rename the `app` folder to your app. You should also update this in `pyproject.toml`, `app/piccolo_app.py` and do a find and replace for `app.` to `foldername.`. 
 
-2. Install dependencies:
+3. Install dependencies:
 
    ```
    uv sync
@@ -37,26 +39,13 @@ This is a Slack template for creating a great Slack app using Python and Starlet
    source .venv/bin/activate.ps1 # for powershell
    ```
 
-3. Copy the `.env.sample` file to `.env`:
+4. Copy the `.env.sample` file to `.env`:
 
    ```
    cp .env.sample .env
    ```
 
-4. Edit the `.env` file and fill in the values:
-
-   ```
-   PORT=3000
-   ENVIRONMENT="development"
-   
-   SLACK_BOT_TOKEN="bot-token"
-   SLACK_SIGNING_SECRET="signing-secret"
-   SLACK_APP_TOKEN="app-token" # This is optional - recommended to use socket mode in dev because it allows you to run the app locally without needing to tunnel. Not recommended for production.
-
-   SLACK_HEARTBEAT_CHANNEL="channel-id"
-   ```
-
-   Replace the values with your actual parameters.
+5. Edit the `.env` file and fill in the values.
 
 
 ## Running the Application
@@ -77,6 +66,7 @@ This is a Slack template for creating a great Slack app using Python and Starlet
    ```
 
 Your Slack app should now be running and connected to your Slack workspace!
+If you're adding commands, your commands in development will be prefixed with `/dev-COMMAND`. When deploying your app, you *must* set the `ENVIRONMENT` env var to `production`.
 
 ## Contributing
 

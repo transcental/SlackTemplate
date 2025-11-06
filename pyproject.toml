@@ -1,11 +1,16 @@
 [project]
-name = "slacktemplate"
+name = "app"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "aiohttp>=3.11.14",
+    "apscheduler>=3.11.1",
+    "blockkit>=2.1.2",
+    "piccolo[all]>=1.30.0",
+    "pydantic>=2.12.4",
+    "pydantic-settings>=2.11.0",
     "python-dotenv>=1.1.0",
     "slack-bolt>=1.23.0",
     "starlette>=0.46.1",
