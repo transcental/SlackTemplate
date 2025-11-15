@@ -7,7 +7,6 @@ This is a Slack template for creating a great Slack app using Python and Starlet
 - Python (3.13 or later)
 - uv
 - A Slack workspace where you have permissions to install apps
-- Tunneling tool (for local development)
 
 ## Setting up the Slack App
 
